@@ -1,3 +1,6 @@
 .spacer {
     height: 15px;
 }
+.pointer {
+    cursor: pointer;
+}

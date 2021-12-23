@@ -26,12 +26,23 @@
   <div class="row">
     <div class="col">
       <div class="card" style="width: 100%; height: auto">
-        <div class="card-body">
+        <div class="card-body" *ngIf="isShowInfo">
             <div class="row">
                 <div class="col-sm-12 col-lg-push-3">
                     <h5 class="card-title">Product profile</h5>
                 </div>
             </div>
+            <div class="row">
+              <div class="col-6 col-push-3">
+                <img src="{{logoImg}}" style="height: 60px;">
+              </div>
+              <div class="col-6 col-push-3 pointer">
+                  <a style="color: rgb(0, 0, 0);" (click)="clear()">
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                  </a>
+              </div>
+          </div>
+            <hr>
             <div *ngFor="let x of productData">
                 <p class="card-text">Barcode no.: {{x.bar_code}}</p>
                 <p class="card-text">Description: {{x.stock_description}}</p>
