@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-9 col-push-3">
+      <input class="form-control" type="search" placeholder="Search"
+          [ngModelOptions]="{standalone: true}" [(ngModel)]="barcodeValue">
+    </div>
+    <div class="col-3">
+      <button class="btn btn-outline-dark" (click)="search()">Search</button>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="row">
+    <div class="col">
+      <barcode-scanner-livestream type="code_128" (valueChanges)="onValueChanges($event)" (started)="(onStarted)">
+      </barcode-scanner-livestream>
+      <button class="btn btn-primary" (click)="openScanner()">
+        Open Scanner
+      </button>
+      &nbsp;
+      <button class="btn btn-danger" *ngIf="isOpen" (click)="closeScanner()">
+        Close scanner
+      </button>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="row">
+    <div class="col">
+      <div class="card" style="width: 100%; height: auto">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-12 col-lg-push-3">
+                    <h5 class="card-title">Product profile</h5>
+                </div>
+            </div>
+            <div *ngFor="let x of productData">
+                <p class="card-text">Barcode no.: {{x.bar_code}}</p>
+                <p class="card-text">Description: {{x.stock_description}}</p>
+                <p class="card-text">Category: {{x.stock_category_description}}</p>
+                <p class="card-text">Group category: {{x.product_group_description}}</p>
+                <p class="card-text">Stock code: {{x.stock_code}}</p>
+                <p class="card-text">Price: R{{x.incl_unit_selling_price}} </p>
+                <p class="card-text">Pack: {{x.pack}} </p>
+                <p class="card-text">Level: {{x.level}} </p>
+                <p class="card-text">Unit of measure: {{x.unit_of_measure}} </p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
